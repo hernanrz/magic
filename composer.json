@@ -1,0 +1,23 @@
+{
+  "name": "hrn4n/magic",
+  "description": "Magic getters and setters for your classes",
+  "version": "1.0.0",
+  
+  "type": "library",
+  "keywords": ["magic", "getters", "setters"],
+  
+  "license": "MIT",
+  
+  "authors": [
+    {
+      "name": "Hernán Ruíz",
+      "email": "hernan@null.net"
+    }
+  ],
+  
+  "autoload": {
+    "psr-4": {
+      "Access\\": "src/"
+    }
+  }
+}
