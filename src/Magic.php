@@ -21,24 +21,39 @@ abstract class Magic
         $getOrSet = 'set';
         break;
 
+      case 'has':
+        $getOrSet = 'has';
+        break;
+
       default:
-        $getOrSet = null;
+        if(substr($name, 0, 2) == "is") {
+          $getOrSet = 'is';
+        }else {
+          $getOrSet = null;
+        }
         break;
     }
 
     if($getOrSet) {
 
-      $propertyName = substr($name, 3);
-      $propertyName = strtolower($propertyName[0]) . substr($propertyName, 1, strlen($propertyName));
+      $rawPropertyName = substr($name, strlen($getOrSet));
+      $propertyName = strtolower($rawPropertyName[0]) . substr($rawPropertyName, 1, strlen($rawPropertyName));
 
-
-      if($getOrSet == "get") {
-
-        return $this->$propertyName;
-
-      }else {
+      if($getOrSet == "set") {
 
         return $this->set($propertyName, $args[0]);
+
+      }elseif ($getOrSet == "has") {
+
+        return isset($this->$propertyName) && !empty($this->$propertyName);
+        
+      }else {
+
+        if(isset($this->$propertyName)) {
+          return $this->$propertyName;
+        }else {
+          return $this->{$getOrSet.$rawPropertyName};
+        }
 
       }
 

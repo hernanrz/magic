@@ -33,6 +33,16 @@ $me->get("name"); # returns "Hernan"
 $me->getName(); # also returns "Hernan"
 ```
 
+### hasPropertyName()
+
+When you call `$me->hasProperty()` it will return true if: the property exists and it's not empty, otherwise it will return false
+
+
+### isProperty()
+
+`$me->isProperty()` Is a shorthand for: `$me->getIsProperty()` OR `$me->getProperty()`
+It will check first is 'isProperty' exists, if it doesn't then it checks if 'Property' exists
+
 ### onSet listeners
 
 Say we add a onNameSet to our Person class:
